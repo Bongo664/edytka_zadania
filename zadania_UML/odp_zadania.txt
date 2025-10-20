@@ -1,0 +1,96 @@
+Odpowiedzi do zadań:
+
+ćw1.1
+C Kompozycja
+
+ćw1.2
+B Agregacja
+
+ćw1.3
+D Zależność
+
+ćw1.4
+C Dziedziczenie
+
+ćw2.1
+Student [1..*] -------- [1..*] Kurs
+
+ćw2.2
+1	Osoba --- A) 0..1 Małżonek	
+
+2	Samochód --- B) 4 Koło	
+
+3	Firma --- C) * (0..*) Pracownik	
+
+ćw2.3
+
+Biblioteka [0..*] – [brak] Czytelnik
+
+Czytelnik [0..5] – [0..1] Książka
+
+ćw4
+
+1. Relacja Uczelnia -> Wydział
+Typ: Kompozycja
+Wielokrotność: 1 -> wiele
+Opis: Uczelnia tworzy i zawiera wiele wydziałów.
+
+2. Relacja Wydział -> Student
+Typ: Agregacja
+Wielokrotność: 1 -> 0..*
+Opis: Wydział przechowuje wielu studentów.
+
+3. Wielokrotności
+
+| Uczelnia 1 <-> 1..* Wydział
+| Wydział 1 <-> 0..* Student
+
+ćw4.2
+1. Relacje:
+Komputer → Procesor: kompozycja, 1..1
+Komputer → RAM: kompozycja, 0..*
+Komputer → Dokument: zależność (tylko w metodzie)
+
+2. Błędy:
+Klasy RAM i Procesor są puste
+Dokument nie ma pola tresc, a getTresc() zwraca pusty tekst
+Brak konstruktorów i modyfikatorów dostępu
+
+
+ćw5.1
+ B) Lew nadal istnieje
+
+ćw5.2
+A) Asocjacja - "ZNAM"
+2. Obiekty mogą istnieć przed i po zakończeniu relacji
+3. Obiekty dostarczane z zewnątrz, nie są niszczone
+5. Swobodne podłączanie i odłączanie
+
+B) Agregacja - "MAM"
+2. Obiekty mogą istnieć przed i po zakończeniu relacji
+3. Obiekty dostarczane z zewnątrz, nie są niszczone
+
+C) Kompozycja - "POSIADAM"
+Obiekty tworzone przez właściciela w konstruktorze
+Części umierają razem z właścicielem
+Część nie może istnieć bez całości
+
+ćw6.1
+
+Powinno być relacja wiele do wielu po obu stronach (0..*) lub dodatkowa encja pośrednia
+
+
+ćw6.2
+
+1. Błędy:
+Błąd 1, 3 i 4.
+
+2. Dlaczego:
+Błąd 1: pole publiczne łamie enkapsulację.
+Błąd 3: kierowca nie powinien sam tworzyć samochodu i silnika – zależności trzeba przekazywać z zewnątrz.
+Błąd 4: dwa samochody nie mogą mieć tego samego silnika – błąd logiczny.
+
+3. Poprawnie:
+silnik w Samochod zrobić private.
+Kierowca ma dostać Samochod w konstruktorze.
+Każdy samochód ma własny Silnik.
