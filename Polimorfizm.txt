@@ -1,0 +1,69 @@
+1. Jaką rolę pełnią metody wirtualne w polimorfizmie?
+Metody wirtualne są podstawą polimorfizmu – pozwalają klasom potomnym nadpisywać zachowanie metod z klasy bazowej. Dzięki nim to, która metoda zostanie wykonana, zależy od rzeczywistego typu obiektu, a nie typu zmiennej.
+
+2. Dlaczego interfejs nie zawiera implementacji metod?
+Interfejs definiuje kontrakt, czyli co klasa musi umieć, ale nie jak to robi.
+Dzięki temu różne klasy mogą implementować ten sam interfejs na swój sposób. Interfejs zapewnia spójność i elastyczność – można zmieniać implementacje bez naruszania ogólnej struktury programu.
+
+3. Co decyduje o tym, która metoda zostanie wywołana (dynamic dispatch)?
+Decyduje o tym rzeczywisty typ obiektu w czasie działania programu (runtime).
+Mechanizm dynamic dispatch sprawdza, z jakiej klasy naprawdę pochodzi obiekt, i uruchamia odpowiednią wersję metody.
+
+4.
+C#
+interface IZwierze {
+    void DajGlos();
+}
+
+class Pies : IZwierze {
+    public void DajGlos() { Console.WriteLine("Hau!"); }
+}
+
+class Kot : IZwierze {
+    public void DajGlos() { Console.WriteLine("Miau!"); }
+}
+
+IZwierze z = new Pies();
+z.DajGlos();
+
+C++
+#include <iostream>
+using namespace std;
+
+class Zwierze {
+public:
+    virtual void DajGlos() = 0;
+};
+
+class Pies : public Zwierze {
+public:
+    void DajGlos() override { cout << "Hau!" << endl; }
+};
+
+Zwierze* z = new Pies();
+z->DajGlos();
+
+Python
+class Zwierze:
+    def daj_glos(self):
+        raise NotImplementedError
+
+class Pies(Zwierze):
+    def daj_glos(self):
+        print("Hau!")
+
+z = Pies()
+z.daj_glos()
+
+JavaScript
+class Zwierze {
+  dajGlos() { throw "Metoda abstrakcyjna"; }
+}
+
+class Pies extends Zwierze {
+  dajGlos() { console.log("Hau!"); }
+}
+
+let z = new Pies();
+z.dajGlos();
+
